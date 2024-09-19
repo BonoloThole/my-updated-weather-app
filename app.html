@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>My Weather Application</title>
+  </head>
+  <body>
+    <div class="weather-app">
+      <header>
+        <form id="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city.."
+            required
+            class="search-input"
+            id="search-input"
+          />
+          <input type="submit" value="Search" class="search-button" />
+        </form>
+      </header>
+      <main>
+        <div class="current-weather">
+          <div>
+            <h1 class="current-city" id="current-city">Paris</h1>
+            <p class="current-details">
+              <span id="current-date"></span>, moderate rain <br />
+              Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+            </p>
+          </div>
+          <div class="current-temperature">
+            <span class="current-temperature-icon">☀️</span>
+            <span class="current-temperature-value" id="current-temperature"
+              >24</span
+            >
+            <span class="current-temperature-unit">°C</span>
+          </div>
+        </div>
+        <div class="forecast">
+          <h2>5-Day Forecast</h2>
+          <div class="forecast-container" id="forecast-container">
+            <div class="forecast-day" id="day-1">
+              <h3 class="forecast-date" id="date-1">Tuesday</h3>
+              <span class="forecast-icon">🌤️</span>
+              <span class="forecast-temperature" id="temp-1">22</span>°C
+            </div>
+            <div class="forecast-day" id="day-2">
+              <h3 class="forecast-date" id="date-2">Wednesday</h3>
+              <span class="forecast-icon">🌦️</span>
+              <span class="forecast-temperature" id="temp-2">20</span>°C
+            </div>
+            <div class="forecast-day" id="day-3">
+              <h3 class="forecast-date" id="date-3">Thursday</h3>
+              <span class="forecast-icon">☁️</span>
+              <span class="forecast-temperature" id="temp-3">19</span>°C
+            </div>
+            <div class="forecast-day" id="day-4">
+              <h3 class="forecast-date" id="date-4">Friday</h3>
+              <span class="forecast-icon">🌧️</span>
+              <span class="forecast-temperature" id="temp-4">18</span>°C
+            </div>
+            <div class="forecast-day" id="day-5">
+              <h3 class="forecast-date" id="date-5">Saturday</h3>
+              <span class="forecast-icon">☀️</span>
+              <span class="forecast-temperature" id="temp-5">21</span>°C
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <p>
+          This project was coded by
+          <a href="#" target="_blank">BonoloThole</a> and is
+          <a
+            href="https://github.com/BonoloThole/My-Shecodes-weather-app/blob/495585dbbbe112fa3a1660c20ef2ef0046476195/index.html"
+            target="_blank"
+          >
+            on GitHub</a
+          >
+          and
+          <a href="https://willowy-daifuku-27ad3c.netlify.app" target="_blank"
+            >hosted on Netlify</a
+          >
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>
