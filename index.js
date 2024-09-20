@@ -8,7 +8,6 @@ function displayTemperature(response) {
   cityElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = temperature;
 
-  // Displaying correct humidity and wind speed
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
 }
@@ -84,16 +83,7 @@ function formatDay(timestamp) {
   return date.toLocaleDateString("en-US", options);
 }
 
-function getWeatherIcon(condition) {
-  const icons = {
-    Clear: "☀️",
-    Rain: "🌧️",
-    Clouds: "☁️",
-    Snow: "❄️",
-    Thunderstorm: "⛈️",
-  };
-  return icons[condition] || "🌈";
-}
+
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
