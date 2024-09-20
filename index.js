@@ -24,7 +24,7 @@ function displayForecast(dailyForecast) {
 }
 
 function getForecast(city) {
-  let apiKey = "76b110f3c34fcb40ft0eb8e332a5of0a";
+  let apiKey = "76b110f3c34fcb40ft0eb8e332a5of0a"; // Replace with your actual API key
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then((response) => {
@@ -37,10 +37,8 @@ function search(event) {
   let searchInputElement = document.querySelector("#search-input");
   let city = searchInputElement.value;
 
-  let apiKey = "76b110f3c34fcb40ft0eb8e332a5of0a";
+  let apiKey = "b2a5adcct04b33178913oc335f405433"; // Replace with your actual API key
   let currentWeatherUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric;
-  axios(apiUrl).then(displayForecast);
 
   axios.get(currentWeatherUrl).then(displayTemperature);
   getForecast(city);
