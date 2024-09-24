@@ -1,30 +1,129 @@
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f8ff;
+  background: #f9f7fe;
+  font-family: "Roboto", sans-serif;
 }
 
-.container {
-    text-align: center;
+a {
+  color: #885df1;
+  text-decoration: none;
 }
 
-.search-box {
-    margin-bottom: 20px;
+.weather-app {
+  background: white;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+  transition: all 0.3s ease-in-out;
 }
 
-#weather-display {
-    display: none;
+.weather-app:hover {
+  box-shadow: 0 40px 60px rgba(65, 50, 100, 0.12);
 }
 
-#weather-display p {
-    margin: 5px 0;
+header {
+  border-bottom: 1px solid #f1e8ff;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-img {
-    width: 100px;
+.search-input {
+  background-color: #f9f7fe;
+  border: none;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  padding: 20px;
+  width: 75%;
+  border-radius: 6px;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
- 
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 4px 10px rgba(136, 93, 241, 0.2);
+}
+
+.search-button {
+  margin-left: 5px;
+  font-size: 16px;
+  background-color: #885df1;
+  color: white;
+  border: none;
+  padding: 20px;
+  line-height: 1;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.search-button:hover {
+  background-color: #774bc7;
+}
+
+main {
+  padding: 30px 0;
+}
+
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.current-city {
+  font-size: 38px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.current-temperature {
+  display: flex;
+  align-items: center;
+  background-color: #f9f7fe;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.current-temperature:hover {
+  transform: scale(1.05);
+}
+
+.current-temperature-value {
+  font-size: 80px;
+  font-weight: bold;
+  margin-right: 5px;
+  color: #333;
+}
+
+.current-details p {
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+#forecast {
+  margin-top: 40px;
+}
+
+.forecast-days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast-day {
+  background-color: #f9f7fe;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.forecast-day p {
+  margin: 10px 0;
+}
+
+.forecast-icon {
+  font-size: 36px;
+}
