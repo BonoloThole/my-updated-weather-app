@@ -1,62 +1,69 @@
-const apiKey = "76b110f3c34fcb40ft0eb8e332a5of0a";
+function displayTemperature(response) {
+    let temperatureElement = document.querySelector("#current-temperature");
+    let temperature = Math.round(response.data.temperature.current);
+    let cityElement = document.querySelector("#current-city");
+    cityElement.innerHTML = response.data.city;
+    temperatureElement.innerHTML = temperature;
+}
 
-document.getElementById("search-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const city = document.getElementById("search-input").value;
-  if (city) {
-    getCurrentWeather(city);
-    getForecast(city);
-  } else {
-    alert("Please enter a city name");
-  }
-});
+function displayForecast(response) {
+    let forecastElement = document.querySelector("#forecast");
+    let forecastHTML = "";
 
-function getCurrentWeather(city) {
-  const url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    
+    response.data.forecast.forEach((forecastDay) => {
+        let date = new Date(forecastDay.date * 1000);
+        let day = date.toLocaleString('en-US', { weekday: 'long' }); 
+        let temperature = Math.round(forecastDay.temperature.maximum);
+        let icon = forecastDay.condition.icon; 
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => displayCurrentWeather(data))
-    .catch((error) => {
-      console.error("Error fetching weather data:", error);
-      alert("Unable to retrieve data. Please try again.");
+        forecastHTML += `
+            <div class="forecast-day">
+                <div class="forecast-date">${day}</div>
+                <img src="${icon}" alt="${forecastDay.condition.description}" class="forecast-icon"/>
+                <div class="forecast-temperature">${temperature}°C</div>
+            </div>
+        `;
+    });
+
+    forecastElement.innerHTML = forecastHTML; 
+}
+
+function fetchForecast(city) {
+    let apiKey = "b2a5adcct04b33178913oc335f405433";
+    let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+
+    axios.get(forecastApiUrl).then(displayForecast); // Call the displayForecast function with the response
+}
+
+function search(event) {
+    event.preventDefault();
+    let searchInputElement = document.querySelector("#search-input");
+    let city = searchInputElement.value;
+
+    let apiKey = "b2a5adcct04b33178913oc335f405433";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then((response) => {
+        displayTemperature(response);
+        fetchForecast(city); // Fetch the forecast data after displaying temperature
     });
 }
 
-function displayCurrentWeather(data) {
-  const city = data.city;
-  const temperature = data.temperature.current;
-  const humidity = data.temperature.humidity;
-  const windSpeed = data.wind.speed;
+function formatDate(date) {
+    let minutes = date.getMinutes();
+    let hours = date.getHours();
+    let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let day = dayNames[date.getDay()];
 
-  document.getElementById("current-city").textContent = `${city}`;
-  document.getElementById("current-temperature").textContent = `${temperature}`;
-  document.getElementById("current-humidity").textContent = `${humidity}`;
-  document.getElementById("current-wind").textContent = `${windSpeed}`;
-}
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
 
-function getForecast(city) {
-  const forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
 
-  fetch(forecastUrl)
-    .then((response) => response.json())
-    .then((data) => displayForecast(data))
-    .catch((error) => {
-      console.error("Error fetching forecast data:", error);
-      alert("Unable to retrieve forecast data. Please try again.");
-    });
-}
-
-function displayForecast(data) {
-  for (let i = 0; i < 5; i++) {
-    document.getElementById(`date-${i + 1}`).textContent = data.daily[i].date;
-    document.getElementById(`temp-${i + 1}`).textContent = data.daily[i].temperature.day;
-    document.getElementById(`icon-${i + 1}`).textContent = getWeatherIcon(data.daily[i].condition.description);
-  }
-}
-
-function getWeatherIcon(description) {
-  if (description.includes("rain")) return "🌧️";
-  if (description.includes("cloud")) return "☁️";
-  return "☀️";
+    // Format the date string
+    return `${day}, ${hours}:${minutes}`;
 }
