@@ -1,76 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Weather Forecast App</title>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <div class="weather-app">
-      <header>
-        <form id="search-form">
-          <input
-            type="search"
-            placeholder="Enter a city.."
-            required
-            id="search-input"
-            class="search-input"
-          />
-          <input type="submit" value="Search" class="search-button" />
-        </form>
-      </header>
-
-      <main>
-        <div class="current-weather">
-          <h2 id="current-city" class="current-city">City</h2>
-          <div class="current-details">
-            <div class="temperature current-temperature">
-              <span id="current-temperature" class="current-temperature-value">--</span>°C
+        <header>
+            <form id="search-form" onsubmit="search(event)">
+                <input
+                    type="search"
+                    placeholder="Enter a city.."
+                    required
+                    class="search-input"
+                    id="search-input"
+                />
+                <input type="submit" value="Search" class="search-button" />
+            </form>
+        </header>
+        <main>
+            <div class="current-weather">
+                <div>
+                    <h1 class="current-city" id="current-city">Paris</h1>
+                    <p class="current-details">
+                        <span id="current-date"></span>, moderate rain <br />
+                        Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+                    </p>
+                </div>
+                <div class="current-temperature">
+                    <span class="current-temperature-icon">☀️</span>
+                    <span class="current-temperature-value" id="current-temperature">24</span>
+                    <span class="current-temperature-unit">°C</span>
+                </div>
             </div>
-            <div class="extra-info current-details">
-              <p>Humidity: <span id="current-humidity">--</span>%</p>
-              <p>Wind: <span id="current-wind">--</span> km/h</p>
+            <div id="forecast" class="forecast">
+                <!-- Forecast data will be inserted here -->
             </div>
-          </div>
-        </div>
-
-        <section id="forecast">
-          <h3>5-Day Forecast</h3>
-          <div class="forecast-days">
-            <div class="forecast-day">
-              <p id="date-1">Date</p>
-              <p><span id="temp-1">--</span>°C</p>
-              <span class="forecast-icon" id="icon-1">☀️</span>
-            </div>
-            <div class="forecast-day">
-              <p id="date-2">Date</p>
-              <p><span id="temp-2">--</span>°C</p>
-              <span class="forecast-icon" id="icon-2">☀️</span>
-            </div>
-            <div class="forecast-day">
-              <p id="date-3">Date</p>
-              <p><span id="temp-3">--</span>°C</p>
-              <span class="forecast-icon" id="icon-3">☀️</span>
-            </div>
-            <div class="forecast-day">
-              <p id="date-4">Date</p>
-              <p><span id="temp-4">--</span>°C</p>
-              <span class="forecast-icon" id="icon-4">☀️</span>
-            </div>
-            <div class="forecast-day">
-              <p id="date-5">Date</p>
-              <p><span id="temp-5">--</span>°C</p>
-              <span class="forecast-icon" id="icon-5">☀️</span>
-            </div>
-          </div>
-        </section>
-      </main>
+        </main>
+        <footer>
+            This project was coded by
+            <a href="#" target="_blank">BonoloThole</a> and is
+            <a href="https://github.com/BonoloThole/My-Shecodes-weather-app/blob/495585dbbbe112fa3a1660c20ef2ef0046476195/index.html" target="_blank"> on GitHub</a> and
+            <a href="https://heroic-naiad-36cac9.netlify.app/#" target="_blank">hosted on Netlify</a>
+        </footer>
     </div>
-    <script src="script.js"></script>
-  </body>
+    <script src="index.js"></script>
+</body>
 </html>
