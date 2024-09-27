@@ -18,7 +18,7 @@ function displayForecast(forecastData) {
             <span class="forecast-temperature">${Math.round(
               day.main.temp
             )}°C</span>
-            <span class="forecast-icon">☀️</span> <!-- Replace this with real icon -->
+            <span class="forecast-icon">☀️</span> 
           </p>
           <p>Humidity: <strong>${day.main.humidity}%</strong></p>
           <p>Wind: <strong>${day.wind.speed} km/h</strong></p>
@@ -95,3 +95,24 @@ searchForm.addEventListener("submit", search);
 let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
+function displayForecast(forecastData) {
+  const forecastContainer = document.getElementById("forecast-container");
+  forecastContainer.innerHTML = "";
+  forecastData.forEach(function (day, index) {
+    if (index < 5) {
+      const forecastHTML = `
+        <div class="forecast-day">
+          <h3>${formatDay(day.time)}</h3>
+          <p>
+            <span class="forecast-temperature">${Math.round(
+              day.temperature.day
+            )}°C</span>
+            <span class="forecast-icon">☀️</span> <!-- Replace this with real icon -->
+          </p>
+          <p>Humidity: <strong>${day.temperature.humidity}%</strong></p>
+          <p>Wind: <strong>${day.wind.speed} km/h</strong></p>
+        </div>`;
+      forecastContainer.innerHTML += forecastHTML;
+    }
+  });
+}
